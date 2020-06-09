@@ -14,7 +14,7 @@ if (!taskNameInput || !taskTypeInput) {
       name: taskNameInput,
       type: taskTypeInput
     };
-  
+    formEl.reset();
     // send it as an argument to createTaskEl
     createTaskEl(taskDataObj);
   }
