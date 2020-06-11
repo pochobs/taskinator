@@ -139,5 +139,18 @@ var taskStatusChangeHandler = function(event) {
     tasksCompletedEl.appendChild(taskSelected);
   }
 };
+var dragTaskHandler = function(event) {
+  var taskId = event.target.getAttribute("data-task-id");
+  // it will store taskId to the dataTransfer in the objet 
+  event.dataTransfer.setData("text/plain", taskId);
+  var getId = event.dataTransfer.getData("text/plain");
+  console.log("getId:", getId, typeof getId);
+}
+var dropZoneDragHandler = function(event) {
+  event.preventDefault();
+};
+
 pageContentEl.addEventListener("click", taskButtonHandler);
 pageContentEl.addEventListener("change", taskStatusChangeHandler);
+pageContentEl.addEventListener("dragstart", dragTaskHandler);
+pageContentEl.addEventListener("dragover", dropZoneDragHandler);
